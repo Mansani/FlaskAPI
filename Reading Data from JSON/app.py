@@ -6,11 +6,10 @@ app=Flask(__name__)
 @app.route('/api',methods=['Get'])
 def GetData():
     try:
-        with open('data.json','r') as file:
-            data=json.load(json)
+        with open('data.json', 'r') as file:
+            data = json.load(file)
         return jsonify(data)
-    except Expection as e:
-        return jsonify({"Error Message",str(e)}),500
-
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 if(__name__)=='main':
     app.run(host='0.0.0.0',port=5000,debug=true)
